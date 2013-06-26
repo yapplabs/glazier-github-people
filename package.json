@@ -1,12 +1,12 @@
 {
-  "name": "glazier-card-bootstrap",
+  "name": "glazier-github-people",
   "glazierConfig": {
     "consumes": [
       "repository"
     ],
     "assetHost": "http://glazier.s3.amazonaws.com",
-    "shortName": "glazier-card-bootstrap",
-    "repositoryName": "raycohen/glazier-card-bootstrap"
+    "shortName": "glazier-github-people",
+    "repositoryName": "yapplabs/glazier-github-people"
   },
   "version": "0.0.1",
   "description": "A starting point for making glazier cards",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/raycohen/glazier-card-bootstrap.git"
+    "url": "https://github.com/yapplabs/glazier-github-people.git"
   },
   "author": "Yapp Labs",
   "license": "MIT",
