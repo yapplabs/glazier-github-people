@@ -1,5 +1,11 @@
-<h3>Github People for {{repositoryName}}</h3>
+<h3>{{title}}</h3>
 
-{{#each people}}
-  <div class="person"><img {{bindAttr src="avatar_url"}} /> <span>{{login}}</span></div>
-{{/each}}
+{{#if canAddPerson}}
+  {{input type="text" placeholder="Github login" valueBinding="personInputValue"}} <button {{action addPerson}}>Add</button>
+{{/if}}
+
+<div>
+  {{#each people}}
+    <div class="person"><img {{bindAttr src="avatar_url"}} /> <span>{{login}}</span></div>
+  {{/each}}
+</div>
