@@ -1,0 +1,5 @@
+<h3>Github People for {{repositoryName}}</h3>
+
+{{#each people}}
+  <div class="person"><img {{bindAttr src="avatar_url"}} /> <span>{{login}}</span></div>
+{{/each}}

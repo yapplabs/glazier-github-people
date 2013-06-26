@@ -1,15 +1,18 @@
 {
-  "name": "glazier-github-people",
+  "name": "github-people",
   "glazierConfig": {
     "consumes": [
-      "repository"
+      "authenticatedGithubApi",
+      "unauthenticatedGithubApi",
+      "repository",
+      "identity"
     ],
     "assetHost": "http://glazier.s3.amazonaws.com",
-    "shortName": "glazier-github-people",
+    "shortName": "github-people",
     "repositoryName": "yapplabs/glazier-github-people"
   },
   "version": "0.0.1",
-  "description": "A starting point for making glazier cards",
+  "description": "A card for showing arbitrary people from Github",
   "main": "card.js",
   "scripts": {
     "test": "grunt test"

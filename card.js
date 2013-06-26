@@ -1,16 +1,21 @@
 import 'conductor' as Conductor;
 
-// If you need them, you can require additional vendored javascript files from Glazier:
 Conductor.require('/vendor/jquery.js');
-// Conductor.require('/vendor/handlebars.js');
-// Conductor.require('/vendor/ember-latest.js');
-// Conductor.require('/vendor/loader.js');
-
+Conductor.require('/vendor/handlebars.js');
+Conductor.require('/vendor/ember-latest.js');
+Conductor.require('/vendor/loader.js');
 Conductor.requireCSS('card.css');
+
+import 'app/consumers/test' as TestConsumer;
+import 'app/consumers/identity' as IdentityConsumer;
 
 var card = Conductor.card({
   consumers: {
-    'repository': Conductor.Oasis.Consumer
+    'test': TestConsumer,
+    'identity': IdentityConsumer,
+    'repository': Conductor.Oasis.Consumer,
+    'authenticatedGithubApi': Conductor.Oasis.Consumer,
+    'unauthenticatedGithubApi': Conductor.Oasis.Consumer
   },
 
   render: function (intent, dimensions) {
@@ -21,15 +26,23 @@ var card = Conductor.card({
       };
     }
 
-    document.body.innerHTML = "<div id=\"card\">Hello Bootstrap.  Click me.</div>";
+    document.body.innerHTML = "<div id=\"card\"></div>";
+
+    Ember.run(App, 'advanceReadiness');
+
+    return App;
   },
 
   activate: function() {
-    card.consumers.repository.request('getRepository').then(function(name) {
-      $('#card').click(function() {
-        alert('You clicked me in ' + name);
+    window.App = requireModule('app/application');
+  },
+
+  metadata: {
+    document: function(promise) {
+      promise.resolve({
+        title: "Github People"
       });
-    });
+    }
   },
 
   resize: function(dimensions) {
