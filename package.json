@@ -32,12 +32,13 @@
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-qunit": "~0.2.1",
     "grunt-ember-handlebars": "~0.6.0",
     "handlebars": "",
     "grunt-contrib-handlebars": "~0.5.8",
     "matchdep": "~0.1.2",
     "grunt-md5": "~0.1.11",
     "grunt-s3": "~0.2.0-alpha.2",
-    "glazier-card-grunt-config": "~0.0.3"
+    "glazier-card-grunt-config": "~0.0.6"
   }
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="glazier-conductor-url" content="/vendor/conductor.js.html">
+  <title>QUnit Example</title>
+  <link rel="stylesheet" href="./test/vendor/qunit.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="./test/vendor/loader.js"></script>
+  <script src="./test/vendor/jquery.js"></script>
+  <script src="./test/vendor/handlebars.js"></script>
+  <script src="./test/vendor/ember-latest.js"></script>
+  <script src="./test/vendor/conductor.js.html"></script>
+  <script src="./test/vendor/qunit.js"></script>
+  <script src="./card.js"></script>
+  <script src="./test.js"></script>
+  <script>
+    Ember.keys(define.registry).forEach(function(moduleName){
+      if (moduleName.indexOf('test') === 0) {
+        requireModule(moduleName);
+      }
+    });
+  </script>
+  </body>
+</body>
+</html>
