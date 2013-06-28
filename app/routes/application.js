@@ -19,13 +19,18 @@ var ApplicationRoute = Ember.Route.extend({
       return route.retrievePeople(user);
     });
   },
-  retrievePeople: function(){
+  setupController: function(controller, model){
+    this._super(controller, model);
+    this.controllerFor('user').set('model', model.user);
+  },
+  retrievePeople: function(user){
     var repositoryConsumer = this.get('repositoryConsumer');
     var route = this;
     return repositoryConsumer.request('getCurrentRepositoryName').then(function(repositoryName) {
       return {
         repositoryName: repositoryName,
-        people: route.controllerFor('people')
+        people: route.controllerFor('people'),
+        user: user
       };
     }).then(null, Conductor.error);
   }

@@ -1,11 +1,14 @@
 Ember.testing = true;
 import 'app/application' as Application;
 
-var stubAdminStorage;
+var stubAdminStorage, repoName;
 
 module('github-people Application', {
   setup: function() {
-    var stubUser = { login: 'foo' };
+    var stubUser = {
+      login: 'foo',
+      editableRepositories: ['foo/foorepo']
+    };
     var identityConsumer = {
       request: function(requestName){
         if (requestName === 'currentUser') {
@@ -13,10 +16,11 @@ module('github-people Application', {
         }
       }
     };
+    repoName = "foo/foorepo";
     var repositoryConsumer = {
       request: function(requestName){
         if (requestName === 'getCurrentRepositoryName') {
-          return Ember.RSVP.resolve("foorepo");
+          return Ember.RSVP.resolve(repoName);
         }
       }
     };
@@ -93,7 +97,7 @@ module('github-people Application', {
   }
 });
 
-test("first test", function(){
+test("Basic editing flow", function(){
   expect(9);
   var testPromise = App.then(function(){
     return visit("/").then(function() {
@@ -120,6 +124,25 @@ test("first test", function(){
   }).then(function() {
     equal(find(".title").text(), "Core Team");
     equal(stubAdminStorage['title'], "Core Team");
+  });
+
+  testPromise.then(null, function(reason) {
+    console.error(reason);
+    setTimeout(function(){
+      throw reason;
+    }, 0);
+  });
+});
+
+test("readOnly experience", function(){
+  expect(2);
+  repoName = 'bar/barRepo';
+  var testPromise = App.then(function(){
+    return visit("/").then(function() {
+      ok(true, "Loaded");
+    });
+  }).then(function(){
+    equal(find("a[href='/edit']").length, 0, "Edit link should not appear");
   });
 
   testPromise.then(null, function(reason) {

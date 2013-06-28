@@ -1,5 +1,6 @@
 var IndexController = Ember.Controller.extend({
-  canAddPerson: true //TODO: based on repository editing permissions
+  needs: ['user'],
+  canEdit: Em.computed.alias('controllers.user.canEdit')
 });
 
 export = IndexController;
