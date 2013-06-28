@@ -4,4 +4,6 @@ Router.map(function(){
   this.route('edit');
 });
 
+Router.router.log = Ember.Logger.debug;
+
 export = Router;

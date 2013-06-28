@@ -25,7 +25,6 @@ var card = Conductor.card({
         height: 300
       };
     }
-
     document.body.innerHTML = "<div id=\"card\"></div>";
 
     Ember.run(App, 'advanceReadiness');
@@ -34,7 +33,13 @@ var card = Conductor.card({
   },
 
   activate: function() {
-    window.App = requireModule('app/application');
+    window.App = requireModule('app/application').create();
+    App.deferReadiness();
+    for (var consumerName in this.consumers) {
+      if (this.consumers.hasOwnProperty(consumerName)) {
+        App.register('consumer:' + consumerName, this.consumers[consumerName], {instantiate: false});
+      }
+    }
   },
 
   metadata: {
