@@ -24,7 +24,8 @@
     "strictEqual",
     "module",
     "process",
-    "expect"
+    "expect",
+    "visit"
   ],
   "node" : false,
   "browser" : true,

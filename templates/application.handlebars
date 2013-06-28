@@ -1,8 +1,6 @@
 <h3>{{title}}</h3>
 
-{{#if canAddPerson}}
-  {{input type="text" placeholder="Github login" valueBinding="personInputValue"}} <button {{action addPerson}}>Add</button>
-{{/if}}
+{{outlet}}
 
 <div>
   {{#each people}}
