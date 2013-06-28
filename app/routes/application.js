@@ -13,7 +13,6 @@ var ApplicationRoute = Ember.Route.extend({
     }
   },
   model: function(){
-    debugger;
     var route = this,
         identityConsumer = this.get('identityConsumer');
     return identityConsumer.request("currentUser").then(function(user){
@@ -22,10 +21,11 @@ var ApplicationRoute = Ember.Route.extend({
   },
   retrievePeople: function(){
     var repositoryConsumer = this.get('repositoryConsumer');
+    var route = this;
     return repositoryConsumer.request('getCurrentRepositoryName').then(function(repositoryName) {
-      // TODO: get people info
       return {
-        repositoryName: repositoryName
+        repositoryName: repositoryName,
+        people: route.controllerFor('people')
       };
     }).then(null, Conductor.error);
   }
