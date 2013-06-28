@@ -1,6 +1,8 @@
 Ember.testing = true;
 import 'app/application' as Application;
 
+var stubAdminStorage;
+
 module('github-people Application', {
   setup: function() {
     var stubUser = { login: 'foo' };
@@ -15,6 +17,19 @@ module('github-people Application', {
       request: function(requestName){
         if (requestName === 'getCurrentRepositoryName') {
           return Ember.RSVP.resolve("foorepo");
+        }
+      }
+    };
+    stubAdminStorage = {};
+    var adminStorageConsumer = {
+      request: function(requestName, key, value) {
+        if (requestName === "setItem") {
+          stubAdminStorage[key] = value;
+          return Ember.RSVP.resolve();
+        }
+
+        if (requestName === "getItem") {
+          return Ember.RSVP.resolve(stubAdminStorage[key]);
         }
       }
     };
@@ -61,6 +76,7 @@ module('github-people Application', {
         container.register('consumer:identity', identityConsumer, { instantiate: false });
         container.register('consumer:repository', repositoryConsumer, { instantiate: false });
         container.register('consumer:authenticatedGithubApi', authenticatedGithubApiConsumer, { instantiate: false });
+        container.register('consumer:adminStorage', adminStorageConsumer, { instantiate: false });
       }
     });
     Ember.run(function(){
@@ -78,7 +94,7 @@ module('github-people Application', {
 });
 
 test("first test", function(){
-  expect(3);
+  expect(9);
   var testPromise = App.then(function(){
     return visit("/").then(function() {
       ok(true, "Loaded");
@@ -90,8 +106,20 @@ test("first test", function(){
 
     return fillIn(".github-login", "raycohen").click(".add-person-button");
   }).then(function() {
-    ok(Em.$.trim(find('.person').text()) === 'raycohen', "Displays user Info")
-    debugger;
+    ok(Em.$.trim(find('.person').text()) === 'raycohen', "Displays user Info");
+
+    deepEqual(stubAdminStorage.people, ['raycohen']);
+    ok(stubAdminStorage['login:raycohen']);
+    equal(stubAdminStorage['login:raycohen'].login, 'raycohen');
+
+    return click(".done-editing-button");
+  }).then(function() {
+    ok(find("input.github-login").length === 0, "form field is hidden");
+
+    return click("a[href='/edit']").fillIn("input.title-field", "Core Team").click(".save-title-button");
+  }).then(function() {
+    equal(find(".title").text(), "Core Team");
+    equal(stubAdminStorage['title'], "Core Team");
   });
 
   testPromise.then(null, function(reason) {

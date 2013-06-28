@@ -5,7 +5,8 @@
       "authenticatedGithubApi",
       "unauthenticatedGithubApi",
       "repository",
-      "identity"
+      "identity",
+      "adminStorage"
     ],
     "assetHost": "http://glazier.s3.amazonaws.com",
     "shortName": "github-people",
