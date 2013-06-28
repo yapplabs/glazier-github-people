@@ -1,4 +1,4 @@
-var PeopleController = Em.ArrayController.extend({
+var PeopleController = Ember.ArrayController.extend({
   content: [],
 
   adminStorageConsumer: function() {

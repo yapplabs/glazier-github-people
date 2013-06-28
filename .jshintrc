@@ -25,7 +25,10 @@
     "module",
     "process",
     "expect",
-    "visit"
+    "visit",
+    "click",
+    "fillIn",
+    "find"
   ],
   "node" : false,
   "browser" : true,
