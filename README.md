@@ -8,7 +8,7 @@ a card. Great for listing core team members of a project, etc.
 ## Adding to glazier
 
     # in `glazier/cards/`
-    ln -s your/path/to/glazier-github-people
+    ln -s your/path/to/glazier-github-people github-people
 
     # in `glazier/`
     grunt ingestCards
