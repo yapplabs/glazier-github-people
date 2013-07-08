@@ -16,12 +16,6 @@ a card. Great for listing core team members of a project, etc.
     # in `glazier/glazier-server/`
     bundle exec rails console
 
-    # lookup the CardManifest record
-    cm = CardManifest.where(name: 'yapplabs/glazier-github-people').first
-
-    # create a Pane record
-    pane = Pane.create{|pane| pane.card_manifest_name = cm.name }
-
     # add the Pane to the dashboard of your choosing
     db = Dashboard.where(repository: 'emberjs/ember.js').first
-    db.panes.push(pane)
+    db.add_pane('yapplabs/github-people')
