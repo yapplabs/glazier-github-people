@@ -28,4 +28,4 @@ var PeopleController = Ember.ArrayController.extend({
   }
 });
 
-export = PeopleController;
+export default PeopleController;

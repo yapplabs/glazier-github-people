@@ -8,4 +8,4 @@ var UserController = Ember.ObjectController.extend({
   }.property('editableRepositories', 'repositoryName')
 });
 
-export = UserController;
+export default UserController;

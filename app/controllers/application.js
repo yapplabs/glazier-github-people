@@ -6,4 +6,4 @@ var ApplicationController = Ember.ObjectController.extend({
   personInputValue: null
 });
 
-export = ApplicationController;
+export default ApplicationController;

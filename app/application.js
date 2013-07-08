@@ -1,5 +1,5 @@
-import 'resolver' as Resolver;
-import 'app/router' as Router;
+import Resolver from 'resolver';
+import Router from 'app/router';
 
 var Application = Ember.Application.extend({
   modulePrefix: 'app',
@@ -10,4 +10,4 @@ var Application = Ember.Application.extend({
 
 requireModule('templates');
 
-export = Application;
+export default Application;

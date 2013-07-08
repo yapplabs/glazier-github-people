@@ -1,3 +1,3 @@
 var EditController = Ember.Controller.extend();
 
-export = EditController;
+export default EditController;

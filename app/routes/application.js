@@ -1,4 +1,4 @@
-import 'conductor' as Conductor;
+import Conductor from 'conductor';
 
 var ApplicationRoute = Ember.Route.extend({
   identityConsumer: function(){
@@ -36,4 +36,4 @@ var ApplicationRoute = Ember.Route.extend({
   }
 });
 
-export = ApplicationRoute;
+export default ApplicationRoute;

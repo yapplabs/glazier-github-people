@@ -3,4 +3,4 @@ var IndexController = Ember.Controller.extend({
   canEdit: Ember.computed.alias('controllers.user.canEdit')
 });
 
-export = IndexController;
+export default IndexController;

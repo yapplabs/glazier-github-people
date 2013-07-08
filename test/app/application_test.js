@@ -1,5 +1,5 @@
 Ember.testing = true;
-import 'app/application' as Application;
+import Application from 'app/application';
 
 var stubAdminStorage, repoName,
     cocoJson = {

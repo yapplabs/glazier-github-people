@@ -23,4 +23,4 @@ var EditRoute = Ember.Route.extend({
   }
 });
 
-export = EditRoute;
+export default EditRoute;

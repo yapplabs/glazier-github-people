@@ -6,4 +6,4 @@ Router.map(function(){
 
 Router.router.log = Ember.Logger.debug;
 
-export = Router;
+export default Router;
