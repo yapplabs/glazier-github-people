@@ -1,10 +1,5 @@
 <h3 class='title'>{{title}}</h3>
-
 {{outlet}}
-
 <div>
-  <h4>People:</h4>
-  {{#each people}}
-    <div class="person"><img {{bindAttr src="avatar_url"}} /> <span>{{login}}</span></div>
-  {{/each}}
+  {{render 'people'}}
 </div>

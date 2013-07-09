@@ -1,4 +1,5 @@
 import Conductor from 'conductor';
+var RSVP = Ember.RSVP;
 
 var ApplicationRoute = Ember.Route.extend({
   identityConsumer: function(){
@@ -14,25 +15,17 @@ var ApplicationRoute = Ember.Route.extend({
   },
   model: function(){
     var route = this,
-        identityConsumer = this.get('identityConsumer');
-    return identityConsumer.request("currentUser").then(function(user){
-      return route.retrievePeople(user);
+        identityConsumer = this.get('identityConsumer'),
+        repositoryConsumer = this.get('repositoryConsumer');
+
+    return RSVP.hash({
+      user:  identityConsumer.request('currentUser'),
+      repositoryName:  repositoryConsumer.request('getCurrentRepositoryName')
     });
   },
   setupController: function(controller, model){
     this._super(controller, model);
     this.controllerFor('user').set('model', model.user);
-  },
-  retrievePeople: function(user){
-    var repositoryConsumer = this.get('repositoryConsumer');
-    var route = this;
-    return repositoryConsumer.request('getCurrentRepositoryName').then(function(repositoryName) {
-      return {
-        repositoryName: repositoryName,
-        people: route.controllerFor('people'),
-        user: user
-      };
-    }).then(null, Conductor.error);
   }
 });
 

@@ -1,0 +1,9 @@
+<h4> People: </h4>
+{{#each}}
+  <div class="person">
+    <img {{bindAttr src="avatar_url"}} />
+    <span>
+      {{login}}
+    </span>
+  </div>
+{{/each}}
