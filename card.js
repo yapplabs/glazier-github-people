@@ -7,25 +7,16 @@ Conductor.require('/vendor/loader.js');
 Conductor.requireCSS('card.css');
 
 import TestConsumer from 'app/consumers/test';
-import IdentityConsumer from 'app/consumers/identity';
 
 var card = Conductor.card({
   consumers: {
     'test': TestConsumer,
-    'identity': IdentityConsumer,
-    'repository': Conductor.Oasis.Consumer,
     'adminStorage': Conductor.Oasis.Consumer,
     'authenticatedGithubApi': Conductor.Oasis.Consumer,
     'unauthenticatedGithubApi': Conductor.Oasis.Consumer
   },
 
   render: function (intent, dimensions) {
-    if (!dimensions) {
-      dimensions = {
-        width: 500,
-        height: 300
-      };
-    }
     document.body.innerHTML = "<div id=\"card\"></div>";
 
     Ember.run(App, 'advanceReadiness');
@@ -33,14 +24,16 @@ var card = Conductor.card({
     return App;
   },
 
-  activate: function() {
-    window.App = requireModule('app/application').create();
+  activate: function(data) {
+    var Application = requireModule('app/application');
+
+    window.App = Application.create();
     App.deferReadiness();
-    for (var consumerName in this.consumers) {
-      if (this.consumers.hasOwnProperty(consumerName)) {
-        App.register('consumer:' + consumerName, this.consumers[consumerName], {instantiate: false});
-      }
-    }
+    App.register('card:main', this, { instantiate: false });
+
+    Ember.keys(this.consumers).forEach(function(name){
+      App.register('consumer:' + name, this.consumers[name], { instantiate: false });
+    }, this);
   },
 
   metadata: {
