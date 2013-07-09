@@ -10,7 +10,7 @@
     ],
     "assetHost": "http://glazier.s3.amazonaws.com",
     "shortName": "github-people",
-    "repositoryName": "yapplabs/glazier-github-people"
+    "repositoryName": "yapplabs/github-people"
   },
   "version": "0.0.1",
   "description": "A card for showing arbitrary people from Github",
