@@ -19,3 +19,10 @@ a card. Great for listing core team members of a project, etc.
     # add the Pane to the dashboard of your choosing
     db = Dashboard.where(repository: 'emberjs/ember.js').first
     db.add_pane('yapplabs/github-people')
+
+
+## Running Tests
+  grunt autotest
+
+  # view in browser
+  open dist/dev/github-people/test.html
