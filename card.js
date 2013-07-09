@@ -19,9 +19,7 @@ var card = Conductor.card({
 
   render: function (intent, dimensions) {
     document.body.innerHTML = "<div id=\"card\"></div>";
-
     Ember.run(App, 'advanceReadiness');
-
     return App;
   },
 
@@ -31,8 +29,7 @@ var card = Conductor.card({
     window.App = Application.create();
     App.deferReadiness();
     App.register('card:main', this, { instantiate: false });
-
-    Ember.keys(this.consumers).forEach(function(name){
+    Ember.keys(this.consumers.__proto__).forEach(function(name){
       App.register('consumer:' + name, this.consumers[name], { instantiate: false });
     }, this);
   },
