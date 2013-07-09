@@ -78,8 +78,6 @@ module('github-people Application', {
     Ember.Application.initializer({
       name: "consumers",
       initialize: function(container, application) {
-        container.register('consumer:identity', identityConsumer, { instantiate: false });
-        container.register('consumer:repository', repositoryConsumer, { instantiate: false });
         container.register('consumer:authenticatedGithubApi', authenticatedGithubApiConsumer, { instantiate: false });
         container.register('consumer:adminStorage', adminStorageConsumer, { instantiate: false });
       }

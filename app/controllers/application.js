@@ -1,5 +1,8 @@
+var alias = Ember.computed.alias;
+
 var ApplicationController = Ember.ObjectController.extend({
-  loggedIn: Ember.computed.bool('user'),
+  cardDataStore: null,
+  repositoryName: alias('cardDataStore.repositoryName'),
   title: function(){
     return "Github People for " + this.get('repositoryName');
   }.property('repositoryName'),

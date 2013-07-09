@@ -1,4 +1,5 @@
 var PeopleController = Ember.ArrayController.extend({
+  cardDataStore: null,
   content: [],
 
   adminStorageConsumer: function() {
