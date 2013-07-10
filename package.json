@@ -1,5 +1,5 @@
 {
-  "name": "glaizer-github-people",
+  "name": "glazier-github-people",
   "glazierConfig": {
     "displayName": "github-people",
     "consumes": [
@@ -40,6 +40,6 @@
     "matchdep": "~0.1.2",
     "grunt-md5": "~0.1.11",
     "grunt-s3": "~0.2.0-alpha.2",
-    "glazier-card-grunt-config": "~0.0.7"
+    "glazier-card-grunt-config": "~0.1.0"
   }
 }
