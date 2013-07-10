@@ -29,7 +29,7 @@ var card = Conductor.card({
     window.App = Application.create();
     App.deferReadiness();
     App.register('card:main', this, { instantiate: false });
-    Ember.keys(this.consumers.__proto__).forEach(function(name){
+    Ember.keys(Object.getPrototypeOf(this.consumers)).forEach(function(name){
       App.register('consumer:' + name, this.consumers[name], { instantiate: false });
     }, this);
   },
