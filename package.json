@@ -1,6 +1,7 @@
 {
-  "name": "github-people",
+  "name": "glaizer-github-people",
   "glazierConfig": {
+    "displayName": "github-people",
     "consumes": [
       "authenticatedGithubApi",
       "unauthenticatedGithubApi",
@@ -8,9 +9,7 @@
       "identity",
       "adminStorage"
     ],
-    "assetHost": "http://glazier.s3.amazonaws.com",
-    "shortName": "github-people",
-    "repositoryName": "yapplabs/github-people"
+    "assetHost": "http://glazier.s3.amazonaws.com"
   },
   "version": "0.0.1",
   "description": "A card for showing arbitrary people from Github",
@@ -18,11 +17,11 @@
   "scripts": {
     "test": "grunt test"
   },
+  "author": "Yapp Labs",
   "repository": {
     "type": "git",
     "url": "https://github.com/yapplabs/glazier-github-people.git"
   },
-  "author": "Yapp Labs",
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
