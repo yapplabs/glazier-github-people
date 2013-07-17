@@ -40,21 +40,7 @@ module('github-people Application', {
       login: 'foo',
       editableRepositories: ['foo/foorepo']
     };
-    var identityConsumer = {
-      request: function(requestName){
-        if (requestName === 'currentUser') {
-          return Ember.RSVP.resolve(stubUser);
-        }
-      }
-    };
     repoName = "foo/foorepo";
-    var repositoryConsumer = {
-      request: function(requestName){
-        if (requestName === 'getCurrentRepositoryName') {
-          return Ember.RSVP.resolve(repoName);
-        }
-      }
-    };
     stubAdminStorage = {};
     var adminStorageConsumer = {
       request: function(requestName, key, value) {

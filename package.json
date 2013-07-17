@@ -5,8 +5,6 @@
     "consumes": [
       "authenticatedGithubApi",
       "unauthenticatedGithubApi",
-      "repository",
-      "identity",
       "adminStorage"
     ],
     "assetHost": "http://glazier.s3.amazonaws.com"
