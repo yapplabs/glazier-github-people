@@ -3,7 +3,7 @@ var PeopleController = Ember.ArrayController.extend({
 
   content: function() {
     var list = [];
-    var logins = this.get('cardDataStore.paneEntries.people');
+    var logins = this.get('cardDataStore.paneEntries.people') || [];
     logins.forEach(function(login) {
       var userHash = this.get('cardDataStore.paneEntries.login:' + login);
       list.push(userHash);
