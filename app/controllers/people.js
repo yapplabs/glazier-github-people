@@ -1,6 +1,15 @@
 var PeopleController = Ember.ArrayController.extend({
   cardDataStore: null,
-  content: [],
+
+  content: function() {
+    var list = [];
+    var logins = this.get('cardDataStore.paneEntries.people');
+    logins.forEach(function(login) {
+      var userHash = this.get('cardDataStore.paneEntries.login:' + login);
+      list.push(userHash);
+    }, this);
+    return list;
+  }.property('cardDataStore.paneEntries'),
 
   adminStorageConsumer: function() {
     return this.container.lookup('consumer:adminStorage');
