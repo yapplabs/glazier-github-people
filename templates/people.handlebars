@@ -1,9 +1,6 @@
-<h4> People: </h4>
 {{#each}}
   <div class="person">
-    <img {{bindAttr src="avatar_url"}} />
-    <span>
-      {{login}}
-    </span>
+    <img data-tooltip="true" {{bindAttr src="avatar_url"}} />
+    <span class="tooltip tooltip-top">{{login}}</span>
   </div>
 {{/each}}
