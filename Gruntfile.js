@@ -8,4 +8,5 @@ module.exports = function(grunt) {
 
   grunt.initConfig(sharedConfig);
   glazierCardGruntConfig.registerSharedTasks(grunt);
+  grunt.registerTask('build', ['clean', 'emberTemplates', 'transpile', 'jshint', 'copy:main', 'copy:test', 'copy:testVendor', 'concat', 'dev_manifest']);
 };

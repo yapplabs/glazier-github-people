@@ -18,7 +18,7 @@ a card. Great for listing core team members of a project, etc.
 
     # add the Pane to the dashboard of your choosing
     db = Dashboard.where(repository: 'emberjs/ember.js').first
-    db.add_pane('yapplabs/github-people')
+    db.add_pane('glazier-github-people')
 
 
 ## Running Tests
