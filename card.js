@@ -23,11 +23,10 @@ var card = Conductor.card({
     if (intent === 'edit') {
       App.__container__.lookup('router:main').send('edit');
     } else {
-
+      document.body.innerHTML = "<div id=\"card\"></div>";
+      Ember.run(App, 'advanceReadiness');
+      return App;
     }
-    document.body.innerHTML = "<div id=\"card\"></div>";
-    Ember.run(App, 'advanceReadiness');
-    return App;
   },
 
   activate: function(data) {
