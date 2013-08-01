@@ -15,10 +15,16 @@ var card = Conductor.card({
     'test': TestConsumer,
     'adminStorage': Conductor.Oasis.Consumer,
     'authenticatedGithubApi': Conductor.Oasis.Consumer,
-    'unauthenticatedGithubApi': Conductor.Oasis.Consumer
+    'unauthenticatedGithubApi': Conductor.Oasis.Consumer,
+    'metadataUpdate': Conductor.Oasis.Consumer
   },
 
   render: function (intent, dimensions) {
+    if (intent === 'edit') {
+      App.__container__.lookup('router:main').send('edit');
+    } else {
+
+    }
     document.body.innerHTML = "<div id=\"card\"></div>";
     Ember.run(App, 'advanceReadiness');
     return App;
@@ -27,7 +33,15 @@ var card = Conductor.card({
   activate: function(data) {
     Conductor.Oasis.configure('eventCallback', Ember.run);
     var Application = requireModule('app/application');
-    window.App = Application.create();
+    window.App = Application.create({
+      ready: function(){
+        var cardMetadataController = this.__container__.lookup('controller:cardMetadata');
+        card.metadata.card = function(){
+          return cardMetadataController.get('content');
+        };
+        cardMetadataController.contentDidChange();
+      }
+    });
     App.deferReadiness();
     App.register('card:main', this, { instantiate: false });
     Ember.keys(Object.getPrototypeOf(this.consumers)).forEach(function(name){
@@ -36,10 +50,15 @@ var card = Conductor.card({
   },
 
   metadata: {
-    document: function(promise) {
-      promise.resolve({
+    document: function() {
+      return {
         title: "Github People"
-      });
+      };
+    },
+    card: function(){
+      return {
+        isEditable: false
+      };
     }
   },
 

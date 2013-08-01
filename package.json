@@ -5,7 +5,8 @@
     "consumes": [
       "authenticatedGithubApi",
       "unauthenticatedGithubApi",
-      "adminStorage"
+      "adminStorage",
+      "metadataUpdate"
     ],
     "assetHost": "http://glazier.s3.amazonaws.com"
   },
