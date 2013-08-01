@@ -6,7 +6,7 @@
       "authenticatedGithubApi",
       "unauthenticatedGithubApi",
       "adminStorage",
-      "metadataUpdate"
+      "remoteEmberObject"
     ],
     "assetHost": "http://glazier.s3.amazonaws.com"
   },
