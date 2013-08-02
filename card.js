@@ -36,27 +36,16 @@ var card = Conductor.card({
   },
 
   render: function (intent, dimensions) {
-    if (intent === 'edit') {
-      App.__container__.lookup('router:main').send('edit');
-    } else {
+    if (!document.getElementById('card')) {
       document.body.innerHTML = "<div id=\"card\"></div>";
-      Ember.run(App, 'advanceReadiness');
-      return App;
     }
+
+    return App.render(intent, dimensions);
   },
 
   activate: function(data) {
-    Conductor.Oasis.configure('eventCallback', Ember.run);
     var Application = requireModule('app/application');
-    window.App = Application.create({
-      ready: function(){
-        // var cardMetadataController = this.__container__.lookup('controller:cardMetadata');
-        // card.metadata.card = function(){
-        //   return cardMetadataController.get('content');
-        // };
-        // cardMetadataController.contentDidChange();
-      }
-    });
+    window.App = Application.create();
     App.deferReadiness();
     App.register('card:main', this, { instantiate: false });
   },
