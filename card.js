@@ -9,6 +9,7 @@ Conductor.requireCSS('/css/glazier_card.css');
 Conductor.requireCSS('card.css');
 
 import TestConsumer from 'app/consumers/test';
+import remoteEmberObjectConsumer from 'app/consumers/remote_ember_object';
 
 var card = Conductor.card({
   consumers: {
@@ -16,23 +17,7 @@ var card = Conductor.card({
     'adminStorage': Conductor.Oasis.Consumer,
     'authenticatedGithubApi': Conductor.Oasis.Consumer,
     'unauthenticatedGithubApi': Conductor.Oasis.Consumer,
-    'remoteEmberObject': Conductor.Oasis.Consumer.extend({
-      controllers: ['cardMetadata'],
-      updateData: function(bucketName, data) {
-        this.send('updateData', { bucket: bucketName, data: data });
-      },
-      requests: {
-        getBucketData: function(bucketName) {
-          if (this.controllers.indexOf(bucketName) === -1) {
-            throw new Error('Invalid bucket name ' + bucketName);
-          } else {
-            // FUTURE: maybe have the bucket-backing objects registered as bucket: types
-            var controller = this.container.lookup('controller:' + bucketName);
-            return controller.getBucketData();
-          }
-        }
-      }
-    })
+    'remoteEmberObject': Conductor.Oasis.Consumer.extend(remoteEmberObjectConsumer)
   },
 
   render: function (intent, dimensions) {
