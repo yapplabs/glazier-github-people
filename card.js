@@ -10,6 +10,7 @@ Conductor.requireCSS('card.css');
 
 import TestConsumer from 'app/consumers/test';
 import remoteEmberObjectConsumer from 'app/consumers/remote_ember_object';
+remoteEmberObjectConsumer.controllers = ['cardMetadata'];
 
 var card = Conductor.card({
   consumers: {
