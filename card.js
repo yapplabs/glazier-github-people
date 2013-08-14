@@ -17,7 +17,9 @@ var card = Conductor.card({
   consumers: {
     'test': TestConsumer,
     'adminStorage': Conductor.Oasis.Consumer,
-    'remoteEmberObject': Conductor.Oasis.Consumer.extend(remoteEmberObjectConsumer)
+    'remoteEmberObject': Conductor.Oasis.Consumer.extend(remoteEmberObjectConsumer),
+    'authenticatedGithubApi': Conductor.Oasis.Consumer,
+    'unauthenticatedGithubApi': Conductor.Oasis.Consumer
   },
 
   render: function (intent, dimensions) {
