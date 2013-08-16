@@ -1,7 +1,7 @@
 var alias = Ember.computed.alias;
 
 var ApplicationController = Ember.ObjectController.extend({
-  needs: ['cardMetadata'],
+  needs: ['cardMetadata', 'people'],
   cardDataStore: null,
   repositoryName: alias('cardDataStore.repositoryName'),
   defaultTitle: function() {
@@ -14,6 +14,7 @@ var ApplicationController = Ember.ObjectController.extend({
   }.property('defaultTitle', 'cardDataStore.paneEntries.title'),
   personInputValue: null,
 
+  people: alias('controllers.people'),
   // used by application view to know when to allow sorting
   isEditing: alias('controllers.cardMetadata.isEditing'),
   // set by the view when sortable changes
