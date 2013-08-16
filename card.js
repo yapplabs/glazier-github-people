@@ -1,6 +1,7 @@
 import Consumer from 'conductor';
 
 Conductor.require('/vendor/jquery.js');
+Conductor.require('/vendor/jquery-sortable.js');
 Conductor.require('/vendor/handlebars.js');
 Conductor.require('/vendor/ember-latest.js');
 Conductor.require('/vendor/ember_card_bridge.js');

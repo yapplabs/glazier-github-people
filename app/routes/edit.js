@@ -1,10 +1,10 @@
 import send from 'app/utils/send';
 
 var EditRoute = Ember.Route.extend({
-  activate: function(){ 
+  activate: function(){
     this.controllerFor('cardMetadata').set('isEditing', true);
   },
-  deactivate: function(){ 
+  deactivate: function(){
     this.controllerFor('cardMetadata').set('isEditing', false);
   },
   setupController: function(controller, model) {
@@ -13,15 +13,25 @@ var EditRoute = Ember.Route.extend({
   adminStorageConsumer: function() {
     return this.container.lookup('consumer:adminStorage');
   }.property(),
+
+  saveTitle: function() {
+    var title = this.controller.get('title');
+    this.controllerFor('application').set('title', title);
+    this.get('adminStorageConsumer').request('setItem', 'title', title);
+  },
+  updatePeopleOrdering: function() {
+    var orderedLogins = this.controllerFor('application').get('orderedLogins');
+    if (orderedLogins) {
+      this.get('adminStorageConsumer').request('setItem', 'people', orderedLogins);
+    }
+    this.controller.set('orderedLogins', null);
+  },
   events: {
     renderDefault: send('doneEditing'),
     doneEditing: function() {
+      this.saveTitle();
+      this.updatePeopleOrdering();
       this.transitionTo('index');
-    },
-    saveTitle: function() {
-      var title = this.controller.get('title');
-      this.controllerFor('application').set('title', title);
-      this.get('adminStorageConsumer').request('setItem', 'title', title);
     },
     addPerson: function() {
       var login = this.controller.get('personInputValue');

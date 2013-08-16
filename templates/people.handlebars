@@ -1,5 +1,5 @@
 {{#each}}
-  <div class="person">
+  <div class="person" {{bindAttr data-user-login="login"}}>
     <img data-tooltip="true" {{bindAttr src="avatar_url"}} />
     <span class="tooltip tooltip-top">{{login}}</span>
   </div>
