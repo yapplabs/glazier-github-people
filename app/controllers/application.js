@@ -3,6 +3,10 @@ var alias = Ember.computed.alias;
 var ApplicationController = Ember.ObjectController.extend({
   needs: ['cardMetadata', 'people'],
   cardDataStore: null,
+  user: alias('cardDataStore.user'),
+  userDidChange: function() {
+    this.send('currentUserChanged', this.get('user'));
+  }.observes('user'),
   repositoryName: alias('cardDataStore.repositoryName'),
   defaultTitle: function() {
     return "Github People for " + this.get('repositoryName');

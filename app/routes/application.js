@@ -6,7 +6,8 @@ var ApplicationRoute = Ember.Route.extend({
     edit: function() {
       this.transitionTo('edit');
     },
-    renderDefault: Ember.K
+    renderDefault: Ember.K,
+    currentUserChanged: Ember.K
   }
 });
 

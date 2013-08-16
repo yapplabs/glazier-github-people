@@ -33,6 +33,9 @@ var EditRoute = Ember.Route.extend({
       this.updatePeopleOrdering();
       this.transitionTo('index');
     },
+    currentUserChanged: function() {
+      this.transitionTo('index');
+    },
     addPerson: function() {
       var login = Ember.$.trim(this.controller.get('personInputValue'));
       var peopleController = this.controllerFor('people');
