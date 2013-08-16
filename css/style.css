@@ -1,1 +1,6 @@
 /* TODO: style form */
+.remove-person {
+  position: absolute;
+  left: 5px;
+  top: 48px;
+}

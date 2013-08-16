@@ -34,10 +34,16 @@ var EditRoute = Ember.Route.extend({
       this.transitionTo('index');
     },
     addPerson: function() {
-      var login = this.controller.get('personInputValue');
+      var login = Ember.$.trim(this.controller.get('personInputValue'));
       var peopleController = this.controllerFor('people');
-      peopleController.addPerson(login);
+      if (login) {
+        peopleController.addPerson(login);
+      }
       this.controller.set('personInputValue', null);
+    },
+    removePerson: function(person) {
+      var peopleController = this.controllerFor('people');
+      peopleController.removePerson(person);
     }
   }
 });
