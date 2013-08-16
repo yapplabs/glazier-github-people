@@ -1,13 +1,16 @@
 import RemoteEmberObjectMixin from 'glazier/remote-ember-object-mixin';
 
 var CardMetadataController = Ember.Controller.extend(RemoteEmberObjectMixin, {
+  needs: ['application'],
   cardDataStore: null, //injected
   publishedProperties: [
     'isEditable',
     'isEditing',
-    'toolbar'
+    'toolbar',
+    'title'
   ],
   isEditable: Ember.computed.bool('cardDataStore.isAdmin'),
+  title: Ember.computed.alias('controllers.application.title'),
 
   // TODO: megahacks
   toolbar: Ember.computed.alias('_toolbar'),
