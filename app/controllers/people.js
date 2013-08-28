@@ -48,8 +48,6 @@ var PeopleController = Ember.ArrayController.extend({
     peopleController.removeObject(person);
     var logins = peopleController.mapProperty('login');
 
-    debugger;
-
     return adminStorageService.request('setItem', 'people', logins).then(function() {
       return adminStorageService.request('removeItem', 'login:' + person.login);
     });
