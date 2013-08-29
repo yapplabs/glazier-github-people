@@ -4,7 +4,7 @@ import Router from 'app/router';
 var Application = Ember.Application.extend({
   modulePrefix: 'app',
   rootElement: '#card',
-  resolver: Resolver,
+  Resolver: Resolver,
   Router: Router
 });
 

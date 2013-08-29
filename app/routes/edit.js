@@ -26,7 +26,7 @@ var EditRoute = Ember.Route.extend({
     }
     this.controller.set('orderedLogins', null);
   },
-  events: {
+  actions: {
     renderDefault: send('doneEditing'),
     doneEditing: function() {
       this.saveTitle();

@@ -1,7 +1,7 @@
 import send from 'app/utils/send';
 
 var ApplicationRoute = Ember.Route.extend({
-  events: {
+  actions: {
     renderEdit: send('edit'),
     edit: function() {
       this.transitionTo('edit');
