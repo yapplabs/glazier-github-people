@@ -5,7 +5,7 @@
     "glazier-card-grunt-config": {
       "version": "0.2.9",
       "from": "glazier-card-grunt-config@~0.2.9",
-      "resolved": "https://registry.npmjs.org/glazier-card-grunt-config/-/glazier-card-grunt-config-0.0.7.tgz"
+      "resolved": "https://registry.npmjs.org/glazier-card-grunt-config/-/glazier-card-grunt-config-0.2.9.tgz"
     },
     "grunt-contrib-clean": {
       "version": "0.4.1",
