@@ -10,6 +10,7 @@ var CardMetadataController = Ember.Controller.extend(RemoteEmberObjectMixin, {
     'title'
   ],
   isEditable: Ember.computed.bool('cardDataStore.isAdmin'),
+  isEditing: Ember.computed.alias('controllers.application.isEditing'),
   title: Ember.computed.alias('controllers.application.title'),
 
   // TODO: megahacks

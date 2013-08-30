@@ -2,10 +2,10 @@ import send from 'app/utils/send';
 
 var EditRoute = Ember.Route.extend({
   activate: function(){
-    this.controllerFor('cardMetadata').set('isEditing', true);
+    this.controllerFor('application').set('isEditing', true);
   },
   deactivate: function(){
-    this.controllerFor('cardMetadata').set('isEditing', false);
+    this.controllerFor('application').set('isEditing', false);
   },
   setupController: function(controller, model) {
     controller.set('title', this.controllerFor('application').get('title'));

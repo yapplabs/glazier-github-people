@@ -19,8 +19,7 @@ var ApplicationController = Ember.ObjectController.extend({
   personInputValue: null,
 
   people: alias('controllers.people'),
-  // used by application view to know when to allow sorting
-  isEditing: alias('controllers.cardMetadata.isEditing'),
+  isEditing: false,
   // set by the view when sortable changes
   orderedLogins: null
 });

@@ -1,5 +1,9 @@
-<h3 class='title'>{{title}}</h3>
+{{#unless isEditing}}
+  <h3 class='title'>{{title}}</h3>
+{{/unless}}
+
 {{outlet}}
+
 <div class="people">
   {{render 'people'}}
 </div>
