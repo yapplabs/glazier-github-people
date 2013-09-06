@@ -10,15 +10,15 @@ Conductor.requireCSS('/css/glazier_card.css');
 Conductor.requireCSS('card.css');
 
 import TestConsumer from 'app/consumers/test';
-import remoteEmberObjectConsumer from 'app/consumers/remote_ember_object';
-remoteEmberObjectConsumer.controllers = ['cardMetadata'];
+import RemoteEmberObjectConsumer from 'app/consumers/remote_ember_object';
+RemoteEmberObjectConsumer.controllers = ['cardMetadata'];
 
 var card = Conductor.card({
   App: null,
   consumers: {
     'test': TestConsumer,
     'adminStorage': Conductor.Oasis.Consumer,
-    'remoteEmberObject': Conductor.Oasis.Consumer.extend(remoteEmberObjectConsumer),
+    'remoteEmberObject': Conductor.Oasis.Consumer.extend(RemoteEmberObjectConsumer),
     'authenticatedGithubApi': Conductor.Oasis.Consumer,
     'unauthenticatedGithubApi': Conductor.Oasis.Consumer
   },
