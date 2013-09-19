@@ -8,7 +8,7 @@
       "adminStorage",
       "remoteEmberObject"
     ],
-    "assetHost": "http://glazier.s3.amazonaws.com"
+    "assetHost": "https://glazier.s3.amazonaws.com"
   },
   "version": "0.0.1",
   "description": "A card for showing arbitrary people from Github",
