@@ -13,11 +13,11 @@ var PeopleController = Ember.ArrayController.extend({
   }.property('cardDataStore.paneEntries'),
 
   adminStorageConsumer: function() {
-    return this.container.lookup('consumer:adminStorage');
+    return this.container.lookup('consumer:admin_storage');
   }.property(),
 
   authenticatedGithubApiConsumer: function(){
-    return this.container.lookup('consumer:authenticatedGithubApi');
+    return this.container.lookup('consumer:authenticated_github_api');
   }.property(),
 
   isEditing: Ember.computed.alias('controllers.application.isEditing'),
@@ -37,20 +37,22 @@ var PeopleController = Ember.ArrayController.extend({
         var logins = peopleController.mapProperty('login');
         return adminStorageService.request('setItem', 'people', logins);
       });
-    }).then(null, Conductor.onerror);
+    }).then(null, Ember.RSVP.rethrow);
   },
 
-  removePerson: function(person) {
-    var githubService = this.get('authenticatedGithubApiConsumer');
-    var adminStorageService = this.get('adminStorageConsumer');
-    var peopleController = this;
+  actions: {
+    removePerson: function(person) {
+      var githubService = this.get('authenticatedGithubApiConsumer');
+      var adminStorageService = this.get('adminStorageConsumer');
+      var peopleController = this;
 
-    peopleController.removeObject(person);
-    var logins = peopleController.mapProperty('login');
+      peopleController.removeObject(person);
+      var logins = peopleController.mapProperty('login');
 
-    return adminStorageService.request('setItem', 'people', logins).then(function() {
-      return adminStorageService.request('removeItem', 'login:' + person.login);
-    });
+      return adminStorageService.request('setItem', 'people', logins).then(function() {
+        return adminStorageService.request('removeItem', 'login:' + person.login);
+      });
+    }
   }
 });
 

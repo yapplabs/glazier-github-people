@@ -43,10 +43,6 @@ var EditRoute = Ember.Route.extend({
         peopleController.addPerson(login);
       }
       this.controller.set('personInputValue', null);
-    },
-    removePerson: function(person) {
-      var peopleController = this.controllerFor('people');
-      peopleController.removePerson(person);
     }
   }
 });
