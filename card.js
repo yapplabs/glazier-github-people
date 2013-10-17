@@ -5,6 +5,7 @@ Conductor.require('/vendor/jquery-sortable.js');
 Conductor.require('/vendor/handlebars.js');
 Conductor.require('/vendor/ember-latest.js');
 Conductor.require('/vendor/ember_card_bridge.js');
+Conductor.require('/vendor/resolver.js');
 
 Conductor.requireCSS('/css/glazier_card.css');
 Conductor.requireCSS('card.css');
@@ -32,7 +33,7 @@ var card = Conductor.card({
   },
 
   activate: function(data) {
-    var Application = requireModule('app/application');
+    var Application = require('app/application');
     window.App = this.App = Application.create();
     App.deferReadiness();
     App.register('card:main', this, { instantiate: false });
